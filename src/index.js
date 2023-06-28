@@ -7,7 +7,7 @@ import reportWebVitals from './reportWebVitals';
 let posts = [
   {id: 1, message: "Hello world", likesCount: 6},
   {id: 2, message: "it's my first react project", likesCount: 15},
-  {id: 3, message: "i am so interested in thisproject", likesCount: 8}
+  {id: 3, message: "i am so interested in this project", likesCount: 8}
 ]
 
 let dialogs =[
