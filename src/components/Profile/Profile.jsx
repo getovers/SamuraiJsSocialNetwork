@@ -3,11 +3,10 @@ import styles from './Profile.module.css';
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 
 function Profile(props){
-    debugger;
     return (
         <div>
             <ProfileInfo/>
-            <MyPosts posts={props.state.posts}/>
+            <MyPosts posts={props.state.posts} newPostText={props.state.newPostText} addPost={props.addPost} updatePostText={props.updatePostText}/>
         </div>
     );
 }

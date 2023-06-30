@@ -3,3 +3,18 @@
     grid-template-columns: 1fr 5fr;
     padding: 10px;
 }
+
+.sendBox{
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: 300px 50px;
+    grid-template-rows: 1fr;
+}
+
+.buttonArea{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
