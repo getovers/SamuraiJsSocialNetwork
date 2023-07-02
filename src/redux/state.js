@@ -14,7 +14,7 @@ let store = {
       ],
       newPostText: ''
     },
-    messagesPage: {
+    dialogsPage: {
       dialogs: [
         { id: 1, name: "Sasha" },
         { id: 2, name: "Dima" },
@@ -41,7 +41,7 @@ let store = {
   subscribe(observer) {
     this._callSubscriber = observer;
   },
-  
+
   dispatch(action) {
     if (action.type === ADD_POST) {
       if (this._state.profilePage.newPostText) {
@@ -60,19 +60,19 @@ let store = {
       this._callSubscriber(this._state);
     }
     else if (action.type === SEND_MESSAGE) {
-      let newMessageText = this._state.messagesPage.newMessageText;
+      let newMessageText = this._state.dialogsPage.newMessageText;
       if (newMessageText) {
         let newMessage = {
           id: 3,
           message: newMessageText
         }
-        this._state.messagesPage.messages.push(newMessage)
-        this._state.messagesPage.newMessageText = ''
+        this._state.dialogsPage.messages.push(newMessage)
+        this._state.dialogsPage.newMessageText = ''
         this._callSubscriber(this._state)
       }
     }
     else if (action.type === UPDATE_MESSAGE_TEXT) {
-      this._state.messagesPage.newMessageText = action.newText;
+      this._state.dialogsPage.newMessageText = action.newText;
       this._callSubscriber(this._state)
     }
   }

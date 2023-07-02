@@ -14,7 +14,7 @@ function App(props) {
         <Routes>
           <Route path='/' element={<Profile state={props.state.profilePage} dispatch={props.dispatch} />} />
           <Route path='/profile' element={<Profile state={props.state.profilePage} dispatch={props.dispatch} />} />
-          <Route path='/dialogs/*' element={<Dialogs state={props.state.messagesPage} newMessageText={props.state.messagesPage.newMessageText} dispatch={props.dispatch} />} />
+          <Route path='/dialogs/*' element={<Dialogs state={props.state.dialogsPage} newMessageText={props.state.dialogsPage.newMessageText} dispatch={props.dispatch} />} />
         </Routes>
       </div>
     </div>
