@@ -30,7 +30,7 @@ function Dialogs(props) {
                     <div className={styles.buttonArea}>
                         <button onClick={sendMessage}>Send</button>
                     </div>
-                </div>
+                </div> 
             </div>
         </div>
     )
