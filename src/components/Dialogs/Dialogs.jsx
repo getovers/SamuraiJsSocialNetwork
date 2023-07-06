@@ -26,7 +26,7 @@ function Dialogs(props) {
             <div className={styles.messages}>
                 <div>{messagesElements}</div>
                 <div className={styles.sendBox}>
-                    <textarea placeholder="Enter your message" onChange={onMessageChange} value={props.newMessageText}></textarea>
+                    <textarea placeholder="Enter your message" onChange={onMessageChange} value={state.newMessageText}></textarea>
                     <div className={styles.buttonArea}>
                         <button onClick={sendMessage}>Send</button>
                     </div>
