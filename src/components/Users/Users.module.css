@@ -1,0 +1,39 @@
+.userBlock {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    grid-template-rows: 80px 25px ;
+    gap: 10px;
+}
+.wrapper {
+    display: grid;
+    width: 70%;
+    gap: 10px;
+    padding: 20px;
+}
+.userPhoto {
+    width: 60%;
+    height: 60%;
+}
+.avatarContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.userDescription{
+    padding: 5px;
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    border: 2px solid darkgray;
+    border-radius: 10px;
+}
+.followBtn{
+    background-color: coral;
+    color: white;
+    font-size: 18px;
+    border: none;
+}
+.fullName{
+    font-size: 18px;
+    font-weight: 500;
+    color: darkgray;
+}

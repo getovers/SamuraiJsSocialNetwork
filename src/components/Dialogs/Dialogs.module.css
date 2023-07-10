@@ -18,3 +18,7 @@
     justify-content: center;
     align-items: center;
 }
+
+.buttonArea button:hover{
+    cursor: pointer;
+}
