@@ -37,3 +37,11 @@
     font-weight: 500;
     color: darkgray;
 }
+.selectedPage{
+    font-weight: bold;
+}
+.panel div {
+    cursor: pointer;
+    display: inline-block;
+    margin: 0 2px;
+}
