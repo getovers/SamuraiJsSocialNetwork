@@ -13,9 +13,8 @@ function Users(props) {
         let currentPageFirst = ((currentPage - 5) < 0) ?  0  : currentPage - 5 ;
         let currentPageLast = currentPage + 5;
         let slicedPages = pages.slice(currentPageFirst, currentPageLast);
-        
     return (
-        <div className={styles.wrapper}>
+        <div className={props.isFetching ? styles.hide : styles.wrapper}>
             <div className={styles.panel}>
                 {slicedPages.map((p) => {
                     return <div key={p} className={props.currentPage === p ? styles.selectedPage : undefined} onClick={() => { props.onPageChange(p) }}>{p}</div>
