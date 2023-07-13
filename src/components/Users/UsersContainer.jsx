@@ -3,10 +3,8 @@ import { follow, setCurrentPage, setTotalUsersCount, setUsers, toggleIsFetching,
 import axios from 'axios'
 import React from 'react'
 import Users from './Users'
-import preloader from '../../photos/preloader.gif'
-import styles from './Users.module.css'
 import Preloader from "../common/Preloader/Preloader";
-class UsersC extends React.Component {
+class UsersContainer extends React.Component {
 
     componentDidMount() {
         this.props.toggleIsFetching(true)
@@ -78,6 +76,6 @@ let mapStateToProps = (state) => {
 //     }
 // } 
 
-const UsersContainer = connect(mapStateToProps,
-    { follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, toggleIsFetching })(UsersC)
-export default UsersContainer;
+
+export default connect(mapStateToProps,
+    { follow, unfollow, setUsers, setCurrentPage, setTotalUsersCount, toggleIsFetching })(UsersContainer);

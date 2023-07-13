@@ -1,11 +1,11 @@
 import MyPostsContainer from './MyPosts/MyPostsContainer';
-import styles from './Profile.module.css';
+import styles from './Profile.module.css'
 import ProfileInfo from './ProfileInfo/ProfileInfo';
 
 function Profile(props){
     return (
         <div>
-            <ProfileInfo/>
+            <ProfileInfo className={styles.profile} profile={props.profile}/>
             <MyPostsContainer/>
         </div>
     );

@@ -14,7 +14,9 @@
     width: 60%;
     height: 60%;
 }
-.avatarContainer {
+.avatarContainer a{
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -31,6 +33,7 @@
     color: white;
     font-size: 18px;
     border: none;
+    cursor: pointer;
 }
 .fullName{
     font-size: 18px;
