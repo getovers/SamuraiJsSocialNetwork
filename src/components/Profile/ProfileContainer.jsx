@@ -6,10 +6,10 @@ import { setUserProfile } from "../../redux/profile-reducer";
 import { useParams } from "react-router-dom";
 
 function ProfileContainer (props){
-    let {userId} = useParams();
-    debugger
+    let {userId} = useParams(); //деструктиризація об'єкта
+
     if(!userId){
-        userId = 2
+        userId = 10
     }
 
     useEffect(() => {

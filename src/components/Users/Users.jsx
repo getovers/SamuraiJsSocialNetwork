@@ -20,7 +20,7 @@ function Users(props) {
                 {slicedPages.map((p) => {
                     return <div key={p} className={props.currentPage === p ? styles.selectedPage : undefined} onClick={() => { props.onPageChange(p) }}>{p}</div>
                 })}
-            </div>
+            </div> 
 
             {
                 props.users.map(u => <div key={u.id} className={styles.userBlock}>

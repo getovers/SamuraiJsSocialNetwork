@@ -1,7 +1,18 @@
 .header{
     background-color: lightblue;
     grid-area: header;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
 }
 .header img{
     height: 40px;
+}
+
+.loginBlock a{
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    font-weight: 500;
+
 }
