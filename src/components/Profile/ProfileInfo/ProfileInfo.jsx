@@ -2,6 +2,8 @@ import Preloader from '../../common/Preloader/Preloader';
 import styles from './ProfileInfo.module.css'
 import facebookLogo from '../../../photos/facebookLogo.png'
 import userPhoto from '../../../photos/userPhoto.png'
+import ProfileStatus from './ProfileStatus/ProfileStatus';
+
 function ProfileInfo(props){
     if(!props.profile){
         return <Preloader/>
@@ -20,6 +22,7 @@ function ProfileInfo(props){
                     <div>
                         <h3>{props.profile.fullName}</h3>
                     </div>
+                    <ProfileStatus status="hey"/>
                     <div>
                         <div className={styles.bold}>About me:</div>
                         <span>{props.profile.aboutMe}</span>
