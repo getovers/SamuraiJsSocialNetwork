@@ -1,7 +1,6 @@
 import { profileAPI } from "../api/api";
 
 const ADD_POST = 'ADD-POST';
-const UPDATE_POST_TEXT = 'UPDATE-POST-TEXT';
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
 
 const SET_USER_STATUS = 'SET-USER-STATUS';
@@ -12,7 +11,6 @@ let initialState = {
         { id: 2, message: "it's my first react project", likesCount: 15 },
         { id: 3, message: "i am so interested in this", likesCount: 8 }
     ],
-    newPostText: '',
     profile: null,
     userStatus: ''
 }
@@ -20,22 +18,14 @@ let initialState = {
 const profileReducer = (state = initialState, action) => {
     switch (action.type) {
         case ADD_POST:
-            if (state.newPostText) {
-                let newPost = {
-                    id: 4,
-                    message: state.newPostText,
-                    likesCount: 0
-                };
-                return {
-                    ...state,
-                    posts: [...state.posts, newPost],
-                    newPostText: ''
-                }
-            }
-        case UPDATE_POST_TEXT:
+            let newPost = {
+                id: 4,
+                message: action.newPostText,
+                likesCount: 0
+            };
             return {
                 ...state,
-                newPostText: action.newText
+                posts: [...state.posts, newPost]
             }
         case SET_USER_PROFILE:
             return {
@@ -51,8 +41,7 @@ const profileReducer = (state = initialState, action) => {
             return state;
     }
 }
-export const addPostCreator = () => ({ type: ADD_POST });
-export const updatePostTextCreator = (text) => ({ type: UPDATE_POST_TEXT, newText: text });
+export const addPostCreator = (newPostText) => ({ type: ADD_POST, newPostText });
 
 export const setUserProfile = (profile) => ({ type: SET_USER_PROFILE, profile });
 
@@ -81,7 +70,7 @@ export const updateUserStatus = (status) => {
     return (dispatch) => {
         profileAPI.updateUserStatus(status)
             .then(response => {
-                if(response.data.resultCode === 0) {
+                if (response.data.resultCode === 0) {
                     dispatch(setUserStatus(status))
                 }
             })
