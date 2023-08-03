@@ -1,0 +1,22 @@
+.sendBox{
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: 200px 50px;
+    grid-template-rows: 1fr;
+    gap: 10px;
+}
+
+.buttonArea{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttonArea button:hover{
+    cursor: pointer;
+}
+.sendBox textarea {
+    width: 100%;
+}
