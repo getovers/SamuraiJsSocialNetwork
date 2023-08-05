@@ -6,9 +6,10 @@ function Header(props){
         <header className={styles.header}>
             <img src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Android_O_Preview_Logo.png" alt=""/>
             <div className={styles.loginBlock}>
-                {props.isAuth ? props.login : <NavLink to={'/login'}>Login</NavLink>}
+                {props.isAuth ? <div> {props.login} | <button onClick={props.logout}>Log out</button></div>: <NavLink to={'/login'}>Login</NavLink>}
             </div>
         </header>
     );
+    
 }
 export default Header;

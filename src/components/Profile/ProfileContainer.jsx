@@ -9,7 +9,7 @@ import { compose } from "redux";
 function ProfileContainer(props) {
     let { userId } = useParams(); //деструктиризація об'єкта
     if (!userId) {
-        userId = 29552
+        userId = props.authorizedUserId
     }
 
     useEffect(() => {
@@ -25,7 +25,9 @@ function ProfileContainer(props) {
 let mapStateToProps = (state) => {
     return {
         profile: state.profilePage.profile,
-        userStatus: state.profilePage.userStatus
+        userStatus: state.profilePage.userStatus,
+        authorizedUserId: state.auth.userId,
+        isAuth: state.auth.isAuth
     }
 }
 
