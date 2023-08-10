@@ -2,23 +2,33 @@ import Profile from "./Profile";
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { getUserProfile, getUserStatus, updateUserStatus } from "../../redux/profile-reducer";
-import { useParams } from "react-router-dom";
+import { Navigate, useParams } from "react-router-dom";
 import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 import { compose } from "redux";
 
 function ProfileContainer(props) {
+
+
     let { userId } = useParams(); //деструктиризація об'єкта
-    if (!userId) {
-        userId = props.authorizedUserId
-    }
 
     useEffect(() => {
-        props.getUserProfile(userId)
-        props.getUserStatus(userId)
-    }, [userId]);
+        if (userId) {
+            props.getUserProfile(userId)
+            props.getUserStatus(userId)
+        }
+    }, [userId, props.isAuth]);
+
+    if (!userId) {
+        userId = props.authorizedUserId
+        if (!userId) {
+            return <Navigate to='/login' />         //need to improve...
+        }
+    }
+
+
 
     return (
-        <Profile profile={props.profile} userStatus={props.userStatus} updateUserStatus={props.updateUserStatus}/>
+        <Profile profile={props.profile} userStatus={props.userStatus} updateUserStatus={props.updateUserStatus} />
     );
 }
 
@@ -32,6 +42,5 @@ let mapStateToProps = (state) => {
 }
 
 export default compose(
-    connect(mapStateToProps, { getUserProfile, getUserStatus, updateUserStatus }),
-    withAuthRedirect
+    connect(mapStateToProps, { getUserProfile, getUserStatus, updateUserStatus })
 )(ProfileContainer)
