@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { follow, unfollow, requestUsers, getUpdatedUsers} from "../../redux/users-reducer";
+import { follow, unfollow, requestUsers, getUpdatedUsers } from "../../redux/users-reducer";
 import React from 'react'
 import Users from './Users'
 import Preloader from "../common/Preloader/Preloader";
@@ -16,9 +16,7 @@ class UsersContainer extends React.Component {
     }
     render() {
         return <>
-            {this.props.isFetching ? <Preloader/> : null}
-
-            <Users {...this.props} onPageChange={this.onPageChange}/>
+            {this.props.isFetching ? <Preloader /> : <Users {...this.props} onPageChange={this.onPageChange} />}
         </>
     }
 }
@@ -70,7 +68,7 @@ let mapStateToProps = (state) => {
 
 
 export default compose(
-    connect(mapStateToProps,{ follow, unfollow, requestUsers, getUpdatedUsers})
+    connect(mapStateToProps, { follow, unfollow, requestUsers, getUpdatedUsers })
 )(UsersContainer)
 
 // connect(mapStateToProps,

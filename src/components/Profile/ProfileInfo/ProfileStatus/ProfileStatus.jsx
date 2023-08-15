@@ -1,18 +1,20 @@
 import { useEffect, useState } from "react";
 import styles from './ProfileStatus.module.css'
-import { updateUserStatus } from "../../../../redux/profile-reducer";
+
 function ProfileStatus(props) {
     const [isEditMode, setEditMode] = useState(false)
     const [userStatus, setUserStatus] = useState(props.status)
     
-    let activateEditMode = () => {
+    const activateEditMode = () => {
         setEditMode(true)
     }
-    let deactivateEditMode = () => {
+    const deactivateEditMode = () => {
         setEditMode(false)
-        props.updateUserStatus(userStatus)
+        if(userStatus !== props.status) {
+            props.updateUserStatus(userStatus)
+        }
     }
-    let onStatusChange = (e) => {
+    const onStatusChange = (e) => {
         setUserStatus(e.currentTarget.value)
     }
     

@@ -3,7 +3,6 @@ import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import { getUserProfile, getUserStatus, updateUserStatus } from "../../redux/profile-reducer";
 import { Navigate, useParams } from "react-router-dom";
-import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 import { compose } from "redux";
 
 function ProfileContainer(props) {
@@ -16,7 +15,7 @@ function ProfileContainer(props) {
             props.getUserProfile(userId)
             props.getUserStatus(userId)
         }
-    }, [userId, props.isAuth]);
+    }, [userId]);
 
     if (!userId) {
         userId = props.authorizedUserId
@@ -27,8 +26,8 @@ function ProfileContainer(props) {
 
 
 
-    return (
-        <Profile profile={props.profile} userStatus={props.userStatus} updateUserStatus={props.updateUserStatus} />
+    return ( 
+     <Profile profile={props.profile} userStatus={props.userStatus} updateUserStatus={props.updateUserStatus} />
     );
 }
 
