@@ -6,7 +6,7 @@ import User from './User';
 function Users({ currentPage, onPageChange, totalUsersCount, pageSize, ...props }) {
     return (
         <div className={props.isFetching ? styles.hide : styles.wrapper}>
-            <Paginator currentPage={currentPage} onPageChange={onPageChange} totalUsersCount={totalUsersCount}
+            <Paginator currentPage={currentPage} onPageChange={onPageChange} totalItemsCount={totalUsersCount}
                 pageSize={pageSize} />
             {
                 props.users.map(u => <User key={u.id} user={u}
