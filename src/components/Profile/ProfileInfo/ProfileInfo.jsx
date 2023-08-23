@@ -8,6 +8,11 @@ function ProfileInfo(props){
     if(!props.profile){
         return <Preloader/>
     }
+    const onMainPhotoSelected = (e) => {
+        if(e.target.files.length) {
+            props.savePhoto(e.target.files[0])
+        }
+    }
     return (
         <div className={styles.wrapper}>
             <div className={styles.wallpaper}>
@@ -23,6 +28,7 @@ function ProfileInfo(props){
                         <h3>{props.profile.fullName}</h3>
                     </div>
                     <ProfileStatus status={props.userStatus} updateUserStatus={props.updateUserStatus}/>
+                    { props.isOwner && <div><span className={styles.bold}>Змінити аватарку </span><input type='file' onChange={onMainPhotoSelected}/></div>}
                     <div>
                         <div className={styles.bold}>About me:</div>
                         <span>{props.profile.aboutMe}</span>

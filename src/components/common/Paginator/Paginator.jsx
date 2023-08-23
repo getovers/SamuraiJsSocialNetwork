@@ -26,7 +26,7 @@ function Paginator({totalItemsCount, pageSize, currentPage, onPageChange, portio
             {pages
                 .filter(p => p>= leftPortionPageNumber && p<= rightPortionPageNumber)
                 .map((p) => {
-                return <div key={p} className={currentPage === p ? styles.selectedPage : undefined} onClick={() => { onPageChange(p) }}>{p}</div>
+                return <div key={p} className={currentPage === p ? styles.selectedPage : null} onClick={() => { onPageChange(p) }}>{p}</div>
             })}
             { portionCount > portionNumber && <button onClick={() => { setPortionNumber(portionNumber + 1)} }>Next</button>}
         </div> 

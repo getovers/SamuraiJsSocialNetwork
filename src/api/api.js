@@ -30,6 +30,12 @@ export const profileAPI = {
     },
     updateUserStatus(status) {
         return api.put(`profile/status`, {status})
+    },
+    savePhoto(photoFile) {
+        const formData = new FormData()
+        formData.append('image', photoFile)
+        return api.put(`profile/photo`, formData)
+            .then(response => response.data)
     }
 }
 
