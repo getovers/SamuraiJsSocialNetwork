@@ -28,7 +28,7 @@ function App(props) {
       <HeaderContainer />
       <Navbar />
       <div className='app-wrapper-content'>
-        <Suspense fallback={<Preloader/>}>
+        <Suspense fallback={<div><Preloader/></div>}>
           <Routes>
             <Route path='/' element={<ProfileContainer />} />
             <Route path='/profile/:userId?' element={<ProfileContainer />} />
