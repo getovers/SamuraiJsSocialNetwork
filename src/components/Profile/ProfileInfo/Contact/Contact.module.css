@@ -1,0 +1,8 @@
+.contact {
+    padding-right: 10px;
+    display: inline-block;
+}
+.contact a {
+    text-decoration: none;
+    color: orangered;
+}

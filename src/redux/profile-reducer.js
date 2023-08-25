@@ -1,3 +1,4 @@
+import { stopSubmit } from "redux-form";
 import { profileAPI } from "../api/api";
 
 const ADD_POST = 'ADD-POST';
@@ -5,7 +6,9 @@ const DELETE_POST = 'DELETE_POST'
 
 const SET_USER_PROFILE = 'SET-USER-PROFILE';
 const SET_USER_STATUS = 'SET-USER-STATUS';
+
 const SAVE_PHOTO_SUCCESS = 'SAVE-PHOTO-SUCCESS';
+const SET_IS_PROFILE_SAVED_AFTER_CHANGES = 'SET-IS-PROFILE-SAVED-AFTER-CHANGES';
 
 
 let initialState = {
@@ -15,7 +18,8 @@ let initialState = {
         { id: 3, message: "i am so interested in this", likesCount: 8 }
     ],
     profile: null,
-    userStatus: ''
+    userStatus: '',
+    isProfileSaved: false
 }
 
 const profileReducer = (state = initialState, action) => {
@@ -50,6 +54,11 @@ const profileReducer = (state = initialState, action) => {
                 ...state,
                 profile: {...state.profile, photos: action.photos}
             }
+        case SET_IS_PROFILE_SAVED_AFTER_CHANGES:
+            return {
+                ...state,
+                isProfileSaved: action.isProfileSaved
+            }
         default:
             return state;
     }
@@ -63,6 +72,8 @@ export const setUserStatus = (userStatus) => ({ type: SET_USER_STATUS, userStatu
 export const deletePost = (postId) => ({ type: DELETE_POST, postId });
 
 export const savePhotoSuccess = (photos) => ({ type: SAVE_PHOTO_SUCCESS, photos });
+
+export const saveProfileSuccess = (isProfileSaved) => ({ type: SET_IS_PROFILE_SAVED_AFTER_CHANGES, isProfileSaved });
 
 
 export const getUserProfile = (userId) => async (dispatch) => {
@@ -86,6 +97,20 @@ export const savePhoto = (file) => async (dispatch) => {
     let response = await profileAPI.savePhoto(file);
     if (response.resultCode === 0) {
         dispatch(savePhotoSuccess(response.data.photos))
+    }
+}
+export const saveProfile = (profile) => async (dispatch, getState) => {
+    const userId = getState().auth.userId
+    const response = await profileAPI.saveProfile(profile);
+
+    if (response.resultCode === 0) {
+        dispatch(getUserProfile(userId))
+        dispatch(saveProfileSuccess(true))
+    }
+    else if(response.resultCode === 1) {
+        dispatch(saveProfileSuccess(false))
+        let message = response.messages.length ? response.messages[0] : "Some error"
+        dispatch(stopSubmit("edit-profile", { _error: message }))
     }
 }
 

@@ -24,19 +24,18 @@ function ProfileStatus(props) {
 
     return (
         <>
-        <div className={styles.bold}>My status: </div>
+        {/* <div className={styles.bold}>My status: </div> */}
             {isEditMode ?
                 <div>
+                    <span className={styles.bold}>Status: </span>
                     <input onChange={onStatusChange} type="text" value={userStatus} onBlur={deactivateEditMode} autoFocus/>
                 </div>
-
                 :
                 <div>
+                    <span className={styles.bold}>Status: </span>
                     <span onDoubleClick={activateEditMode} >{props.status ? props.status : '---'}</span>
                 </div>
             }
-
-
         </>
     )
 }

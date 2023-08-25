@@ -36,6 +36,10 @@ export const profileAPI = {
         formData.append('image', photoFile)
         return api.put(`profile/photo`, formData)
             .then(response => response.data)
+    },
+    saveProfile(profile) {
+        return api.put(`profile`, profile)
+            .then(response => response.data)
     }
 }
 
